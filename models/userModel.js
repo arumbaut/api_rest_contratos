@@ -1,21 +1,18 @@
 var mongoose = require('mongoose'),
 	Schema = mongoose.Schema;
+// Roles
+const roles = {
+    values: ['ADMIN', 'USER'],
+    message: '{VALUE} no es un rol válido'
+  }
 
 var UserSchema = new Schema({
-    name: String,
-    lastName : String,
-    username: String,
-    email: String,
-    phoneHome: String,
-    phoneWork : String,
-    movil : String,
-    ci : String,
-    department : String,
-    cargo : String,
-    numeroTecnico : Number,
-    fechaEntrada : String,
-    avatar : String
-
+    nombre:   { type: String, required: [true, 'El nombre es necesario'] },
+    email: { type: String, unique: true, required: [true, 'Email es necesario'] },
+    pass: { type: String, required: [true, 'Pass es necesario'] },
+    date: { type: Date, default: Date.now },
+    role: { type: String, default: 'USER', enum: roles },
+    activo: { type: Boolean, default: true }
     
 });
 

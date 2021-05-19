@@ -1,4 +1,5 @@
 var User = require("../models/userModel");
+
 const fs = require("fs");
 
 exports.list = function (req, res) {
